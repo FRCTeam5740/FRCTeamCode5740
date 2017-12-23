@@ -7,13 +7,12 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.TalonSRX;
 public class Robot extends IterativeRobot {
-	TalonSRX t0 = new TalonSRX(0);
-	TalonSRX t1 = new TalonSRX(1);
-	TalonSRX t2 = new TalonSRX(2);
-	TalonSRX t3 = new TalonSRX(3);
-	Joystick jsL = new Joystick(0);
-	Joystick jsR = new Joystick(1);
-	RobotDrive drive = new RobotDrive(t0, t1, t2, t3);
+	TalonSRX right = new TalonSRX(0); //right side motors
+	TalonSRX left = new TalonSRX(1); //left side motors
+
+	Joystick jsL = new Joystick(0); //left joystick
+	Joystick jsR = new Joystick(1); //right joystick
+	RobotDrive drive = new RobotDrive(right, left); //define robot drive
 	@Override
 	public void robotInit() {
 
@@ -48,7 +47,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopPeriodic() {
-		drive.tankDrive(-jsL.getY(), -jsR.getY());
+		drive.tankDrive(-jsL.getY(), -jsR.getY()); //drive
 	}
 
 
