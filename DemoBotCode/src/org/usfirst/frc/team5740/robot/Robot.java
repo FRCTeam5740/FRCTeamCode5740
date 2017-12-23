@@ -53,12 +53,16 @@ public class Robot extends IterativeRobot {
 		//double RightY = controller.getRawAxis(1); //y-axis on right stick
 		if(LeftY != 0) {
 			drive.drive(LeftY, 0);
+		} else {
+			drive.drive(0, 0);
 		}
 		if(RightX != 0) {
 			if(RightX < 0) {
 				drive.drive(RightX, RightX);
-			} else {
+			} else if(RightX > 0) {
 				drive.drive(RightX, -RightX);
+			} else {
+				drive.drive(0, 0);
 			}
 		}
 	}
