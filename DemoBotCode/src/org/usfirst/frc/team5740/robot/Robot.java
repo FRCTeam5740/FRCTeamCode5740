@@ -6,15 +6,13 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.TalonSRX;
-import edu.wpi.first.wpilibj.XboxController;
 public class Robot extends IterativeRobot {
 	TalonSRX right = new TalonSRX(0); //right side motors
 	TalonSRX left = new TalonSRX(1); //left side motors
 
-	//Joystick jsL = new Joystick(0); //left joystick
-	//Joystick jsR = new Joystick(1); //right joystick
+
 	RobotDrive drive = new RobotDrive(right, left); //define robot drive
-	Joystick controller = new Joystick(1);
+	Joystick controller = new Joystick(1); //controller on port 1
 	@Override
 	public void robotInit() {
 
@@ -49,13 +47,12 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopPeriodic() {
-		drive.tankDrive(-controller.getY(), -controller.getX()); //drive
-		double LeftX = controller.getRawAxis(1);
-		double LeftY = controller.getRawAxis(2);
-		double RightX = controller.getRawAxis(4);
-		double RightY = controller.getRawAxis(1);
+		//double LeftX = controller.getRawAxis(1); //x-axis on left stick
+		double LeftY = controller.getRawAxis(2); //y-axis on left stick
+		double RightX = controller.getRawAxis(4); //x-axis on right stick
+		//double RightY = controller.getRawAxis(1); //y-axis on right stick
 		if(LeftY != 0) {
-			drive.drive(LeftX, 0);
+			drive.drive(LeftY, 0);
 		}
 		if(RightX != 0) {
 			if(RightX < 0) {
