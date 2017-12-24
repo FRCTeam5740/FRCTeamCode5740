@@ -1,8 +1,7 @@
 
 package org.usfirst.frc.team5740.robot;
-
 import edu.wpi.first.wpilibj.IterativeRobot;
-
+import org.usfirst.frc.team5740.robot.XBDrive;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.TalonSRX;
@@ -48,23 +47,25 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		//double LeftX = controller.getRawAxis(1); //x-axis on left stick
-		double LeftY = controller.getRawAxis(2); //y-axis on left stick
-		double RightX = controller.getRawAxis(4); //x-axis on right stick
+		//double LeftY = controller.getRawAxis(2); //y-axis on left stick
+		//double RightX = controller.getRawAxis(4); //x-axis on right stick
 		//double RightY = controller.getRawAxis(1); //y-axis on right stick
-		if(LeftY != 0) {
-			drive.drive(LeftY, 0);
-		} else {
-			drive.drive(0, 0);
-		}
-		if(RightX != 0) {
-			if(RightX < 0) {
-				drive.drive(RightX, RightX);
-			} else if(RightX > 0) {
-				drive.drive(RightX, -RightX);
-			} else {
-				drive.drive(0, 0);
-			}
-		}
+		//if(LeftY != 0) {
+		//	drive.drive(LeftY, 0);
+		//} else {
+		//	drive.drive(0, 0);
+		//}
+		//if(RightX != 0) {
+		//	if(RightX < 0) {
+		//		drive.drive(RightX, RightX);
+		//	} else if(RightX > 0) {
+		//		drive.drive(RightX, -RightX);
+		//	} else {
+		//		drive.drive(0, 0);
+		//	}
+		//}
+		XBDrive xbdrive = new XBDrive(0, 1, 1); //declares new XBDrive
+		xbdrive.Drive(); //makes it drive
 	}
 
 
