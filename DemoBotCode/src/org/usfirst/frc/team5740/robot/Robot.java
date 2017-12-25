@@ -9,11 +9,10 @@ import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class Robot extends IterativeRobot {
-	TalonSRX right = new TalonSRX(0); //right side motors
-	TalonSRX left = new TalonSRX(1); //left side motors
-	RobotDrive drive = new RobotDrive(right, left); //define robot drive
+	//TalonSRX right = new TalonSRX(0); //right side motors
+	//TalonSRX left = new TalonSRX(1); //left side motors
+	//RobotDrive drive = new RobotDrive(right, left); //define robot drive
 	Joystick controller = new Joystick(1); //controller on port 1
-	Solenoid solenoid = new Solenoid(5); //<------ FIND THE NUMBER FOR THIS
 	Button trigger = new JoystickButton(controller, 1);
 	@Override
 	public void robotInit() {
@@ -43,7 +42,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		trigger.whenPressed(new EnableSolenoid(5)); //<---------FIND VALUE
+		trigger.whenPressed(new EnableSolenoid(1)); //<---------FIND VALUE FOR THIS
 	}
 
 
