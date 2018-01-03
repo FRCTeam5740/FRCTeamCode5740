@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class Robot extends IterativeRobot {
-	//TalonSRX right = new TalonSRX(0); //right side motors
-	//TalonSRX left = new TalonSRX(1); //left side motors
-	//RobotDrive drive = new RobotDrive(right, left); //define robot drive
+	TalonSRX right = new TalonSRX(0); //right side motors
+	TalonSRX left = new TalonSRX(1); //left side motors
+	RobotDrive drive = new RobotDrive(right, left); //define robot drive
 	Joystick controller = new Joystick(1); //controller on port 1
 	Button trigger = new JoystickButton(controller, 1);
 	@Override
@@ -42,7 +42,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		trigger.whenPressed(new EnableSolenoid(1)); //<---------FIND VALUE FOR THIS
+		//trigger.whenPressed(new EnableSolenoid(1)); //<---------FIND VALUE FOR THIS [1: port for the solenoid]
 	}
 
 
@@ -66,8 +66,9 @@ public class Robot extends IterativeRobot {
 		//		drive.drive(0, 0);
 		//	}
 		//}
-		XBDrive xbdrive = new XBDrive(0, 1, 1); //declares new XBDrive [0: 1st talon port, 1: 2nd talon port, 1: Joystick port]
-		xbdrive.Drive(); //makes it drive (see drive() in XBDrive.java)
+		//XBDrive xbdrive = new XBDrive(0, 1, 1); //declares new XBDrive [0: 1st talon port, 1: 2nd talon port, 1: Joystick port]
+		//xbdrive.Drive(); //makes it drive (see drive() in XBDrive.java)
+		drive.arcadeDrive(controller);
 	}
 
 
