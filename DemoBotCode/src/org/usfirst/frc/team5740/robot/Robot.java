@@ -5,6 +5,7 @@ import org.usfirst.frc.team5740.robot.XBDrive;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -14,6 +15,11 @@ public class Robot extends IterativeRobot {
 	RobotDrive drive = new RobotDrive(right, left); //define robot drive
 	Joystick controller = new Joystick(1); //controller on port 1
 	Button trigger = new JoystickButton(controller, 1);
+	Spark s1 = new Spark(2);
+	Spark s2 = new Spark(3);
+	Spark s3 = new Spark(4);
+	Spark s4 = new Spark(5);
+	RobotDrive shooterDrive = new RobotDrive(s1, s2, s3, s4);
 	@Override
 	public void robotInit() {
 
@@ -50,6 +56,9 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		//drive.arcadeDrive(controller);
 	drive.tankDrive(controller.getRawAxis(2), controller.getRawAxis(4));
+	if(controller.getRawAxis(3) != 0) {
+		shooterDrive.drive(controller.getRawAxis(3), 0);
+	}
 	}
 
 
