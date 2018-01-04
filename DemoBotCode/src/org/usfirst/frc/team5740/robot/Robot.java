@@ -49,7 +49,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		//drive.arcadeDrive(controller);
-		drive.tankDrive(controller.getRawAxis(2), controller.getRawAxis(4));
+	drive.tankDrive(controller.getRawAxis(2), controller.getRawAxis(4));
 	}
 
 
